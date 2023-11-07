@@ -33,6 +33,7 @@ export default async (req, res) => {
     border_color,
     disable_animations,
     hide_progress,
+    include_forks,
   } = req.query;
   res.setHeader("Content-Type", "image/svg+xml");
 
@@ -68,6 +69,7 @@ export default async (req, res) => {
       parseArray(exclude_repo),
       size_weight,
       count_weight,
+      parseBoolean(include_forks) ? null : false,
     );
 
     let cacheSeconds = clampValue(
